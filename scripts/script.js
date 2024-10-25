@@ -149,4 +149,3 @@ updateNews();
 // Auto-refresh every 5 minutes
 setInterval(updateWeather, 300000);
 setInterval(updateNews, 300000);
-    
