@@ -317,10 +317,10 @@ footer {
 }
 
 .pagasa-logo {
-    max-width: 60px;
+    max-width: 170px;
     /* Adjust the width as needed */
     height: auto;
-    margin-top: -0.7rem;
+    margin-top: -0.1rem;
 }
 
 
@@ -457,7 +457,7 @@ footer {
     }
 
     .pagasa-logo {
-        max-width: 40px;
+        max-width: 100px;
         /* Adjust the width for smaller screens */
     }
 
@@ -545,4 +545,10 @@ footer {
     .local-news-item p {
         font-size: 1rem;
     }
+}
+
+.windy-iframe {
+    border-radius: 15px;  /* Adjust to your preference */
+    overflow: hidden;     /* Ensure the content stays within the rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
 }
