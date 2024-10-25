@@ -323,6 +323,89 @@ footer {
     animation: spin 2s linear infinite;
 }
 
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: 300px;
+    width: 100%;
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.notification.hidden {
+    transform: translateY(150%);
+    opacity: 0;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.notification-icon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+}
+
+.notification-text h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+}
+
+.notification-text p {
+    font-size: 0.9rem;
+    color: var(--muted-color);
+    margin: 0;
+}
+
+.notification-dismiss {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.notification-dismiss:hover {
+    opacity: 1;
+}
+
+.notification-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.notification-button:hover {
+    background-color: #3a7bc8;
+}
+
+@media (max-width: 768px) {
+    .notification {
+        display: none;
+    }
+}
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
