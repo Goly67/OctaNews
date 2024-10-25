@@ -181,30 +181,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const localNewsItem = document.getElementById('localNewsItem');
 
     // Define your single news item here
     const newsItem = {
-        title: "PAGASA: 'High chance' LPA will become tropical cyclone",
-        content: "As Severe Tropical Storm #KristinePH (international name: Trami) continued to pound Luzon with strong winds and heavy rains, weather bureau PAGASA warned on Thursday, October 24, 2024, that the low pressure area east of Mindanao would likely develop into a tropical cyclone.'",
-        image: "https://images.gmanews.tv/regionaltv2023/content_images/article/fg1gj6g5f_2024_10_24_14_51_32.png",
-        date: "2024-25-10"
+        title: "Windy weather map available",
+        content: "You can now see the map via Windy! a trusted source of mine that tracked the typhoon Odette back in 2021.",
+        iframeSrc: "https://www.windy.com/?9.243,125.969,6,m:dVsajzk", // Replace with the actual iframe source you need
+        date: "2024-10-25"
     };
 
     function createNewsItem(item) {
         localNewsItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" class="local-news-item-image">
             <div class="local-news-item-content">
                 <h3>${item.title}</h3>
+                <iframe 
+                    class="windy-iframe" 
+                    width="100%" 
+                    height="450" 
+                    src="https://embed.windy.com/embed2.html?lat=9.243&lon=125.969&zoom=6&level=surface&overlay=rain&menu=&message=true&marker=&calendar=&pressure=true&type=map&location=coordinates&detail=&detailLat=9.243&detailLon=125.969&metricWind=km/h&metricTemp=%C2%B0C&radarRange=-1"
+                    frameborder="0">
+                </iframe>
                 <p>${item.content}</p>
                 <p class="date">${item.date}</p>
             </div>
         `;
     }
+    
+    
 
     createNewsItem(newsItem);
 });
+
 
 
 
