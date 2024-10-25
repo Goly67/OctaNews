@@ -151,3 +151,21 @@ updateNews();
 setInterval(updateWeather, 300000);
 setInterval(updateNews, 300000);
     
+document.addEventListener('DOMContentLoaded', function() {
+    const notification = document.getElementById('app-notification');
+    const dismissButton = document.getElementById('dismiss-notification');
+
+    // Show notification after a delay
+    setTimeout(function() {
+        notification.classList.remove('hidden');
+    }, 1000);
+
+    // Dismiss notification
+    dismissButton.addEventListener('click', function() {
+        notification.classList.add('hidden');
+        // Remove the notification from the DOM after the animation
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    });
+});
