@@ -151,21 +151,37 @@ updateNews();
 setInterval(updateWeather, 300000);
 setInterval(updateNews, 300000);
     
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const notification = document.getElementById('app-notification');
     const dismissButton = document.getElementById('dismiss-notification');
 
-    // Show notification after a delay
-    setTimeout(function() {
+    // Show the notification after 1 second
+    setTimeout(function () {
         notification.classList.remove('hidden');
     }, 1000);
 
-    // Dismiss notification
-    dismissButton.addEventListener('click', function() {
+    // Set timeout to automatically hide the notification after 5 minutes
+    const autoDismiss = setTimeout(function () {
         notification.classList.add('hidden');
-        // Remove the notification from the DOM after the animation
+        // Remove from the DOM after hiding it
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 300000); // 5 minutes (300,000 milliseconds)
+
+    // Dismiss notification on button click
+    dismissButton.addEventListener('click', function () {
+        notification.classList.add('hidden');
+        // Cancel the auto-dismiss timeout
+        clearTimeout(autoDismiss);
+        // Remove the notification from the DOM after hiding it
         setTimeout(() => {
             notification.remove();
         }, 300);
     });
 });
+
+// If you dont want people to search your website
+// if (document.referrer === "") {
+    // window.location.href = "https://your-other-site.com"; // Redirect to another page if accessed directly
+// }
