@@ -225,8 +225,10 @@ h1 {
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
-    gap: 1rem; /* Space between items */
+    grid-template-columns: repeat(3, 1fr);
+    /* Change to 3 columns */
+    gap: 1rem;
+    /* Space between items */
 }
 
 .news-item {
@@ -247,29 +249,36 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
+}
+
 
 .news-item-image-container {
     width: 100%;
-    height: 200px; /* Adjust this value as needed */
+    height: 200px;
+    /* Adjust this value as needed */
     overflow: hidden;
-  }
+}
 
-  .news-item-content {
+.news-item-content {
     padding: 15px;
-  }
+}
 
 .news-item h3 {
-    font-size: 1.25rem; /* Increase font size */
-    font-weight: bold; /* Make the title bold */
-    margin-bottom: 0.5rem; /* Space below the title */
-    color: white; /* Use primary color */
-    transition: color 0.3s ease; /* Smooth color transition */
+    font-size: 1.25rem;
+    /* Increase font size */
+    font-weight: bold;
+    /* Make the title bold */
+    margin-bottom: 0.5rem;
+    /* Space below the title */
+    color: white;
+    /* Use primary color */
+    transition: color 0.3s ease;
+    /* Smooth color transition */
 }
 
 .news-item h3:hover {
-    color: var(--secondary-color); /* Change color on hover */
+    color: var(--secondary-color);
+    /* Change color on hover */
 }
 
 .news-item p {
@@ -289,34 +298,55 @@ footer {
 }
 
 .news-item-link {
-    text-decoration: none; /* Remove underline from the link */
-    color: var(--text-color); /* Ensure the text color matches the design */
+    text-decoration: none;
+    /* Remove underline from the link */
+    color: var(--text-color);
+    /* Ensure the text color matches the design */
 }
 
 .news-item-link:hover {
-    color: var(--primary-color); /* Optional: Change color on hover for better UX */
+    color: var(--primary-color);
+    /* Optional: Change color on hover for better UX */
 }
 
 .gma-logo {
-    max-width: 100px; /* Adjust the width as needed */
+    max-width: 100px;
+    /* Adjust the width as needed */
     height: auto;
     margin-top: -0.7rem;
 }
 
+.pagasa-logo {
+    max-width: 60px;
+    /* Adjust the width as needed */
+    height: auto;
+    margin-top: -0.7rem;
+}
+
+
 .loading-animation {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100px; /* Adjust the height as needed */
-    position: absolute; /* Position the animation absolutely */
-    top: 50%; /* Position the animation at the top 50% of its parent */
-    left: 50%; /* Position the animation at the left 50% of its parent */
-    transform: translate(-50%, -50%); /* Center the animation using transform */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    height: 100px;
+    /* Adjust the height as needed */
+    position: absolute;
+    /* Position the animation absolutely */
+    top: 50%;
+    /* Position the animation at the top 50% of its parent */
+    left: 50%;
+    /* Position the animation at the left 50% of its parent */
+    transform: translate(-50%, -50%);
+    /* Center the animation using transform */
 }
 
 .spinner {
-    border: 4px solid #f3f3f3; /* Adjust border color as needed */
-    border-top: 4px solid #3498db; /* Adjust spinning color as needed */
+    border: 4px solid #f3f3f3;
+    /* Adjust border color as needed */
+    border-top: 4px solid #3498db;
+    /* Adjust spinning color as needed */
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -410,19 +440,27 @@ footer {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
 @media (max-width: 768px) {
     .gma-logo {
-        max-width: 80px; /* Adjust the width for smaller screens */
+        max-width: 80px;
+        /* Adjust the width for smaller screens */
     }
-}
 
+    .pagasa-logo {
+        max-width: 40px;
+        /* Adjust the width for smaller screens */
+    }
 
-@media (min-width: 768px) {
     .forecast-grid {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -430,18 +468,81 @@ footer {
 
 @media (max-width: 1200px) {
     .news-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 columns for medium screens */
     }
 }
 
 @media (max-width: 768px) {
     .news-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust for smaller screens */
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        /* Adjust for smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     .news-grid {
-        grid-template-columns: 1fr; /* 1 column for mobile */
+        grid-template-columns: 1fr;
+        /* 1 column for mobile */
+    }
+}
+
+.local-news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.local-news-item-image {
+    width: 100%;
+    /* Full width by default */
+    height: auto;
+    /* Maintain aspect ratio */
+    object-fit: contain;
+    /* Adjust as needed */
+}
+
+
+.local-news-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.local-news-item-content {
+    padding: 20px;
+    flex-grow: 1;
+    /* This allows the content to expand and fill available space */
+}
+
+.local-news-item h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.local-news-item p {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.local-news-item .date {
+    font-size: 1rem;
+    color: var(--muted-color);
+}
+
+@media (max-width: 768px) {
+    .local-news-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .local-news-item p {
+        font-size: 1rem;
     }
 }
