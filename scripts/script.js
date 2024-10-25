@@ -181,6 +181,33 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const localNewsItem = document.getElementById('localNewsItem');
+
+    // Define your single news item here
+    const newsItem = {
+        title: "PAGASA: 'High chance' LPA will become tropical cyclone",
+        content: "As Severe Tropical Storm #KristinePH (international name: Trami) continued to pound Luzon with strong winds and heavy rains, weather bureau PAGASA warned on Thursday, October 24, 2024, that the low pressure area east of Mindanao would likely develop into a tropical cyclone.'",
+        image: "https://images.gmanews.tv/regionaltv2023/content_images/article/fg1gj6g5f_2024_10_24_14_51_32.png",
+        date: "2024-25-10"
+    };
+
+    function createNewsItem(item) {
+        localNewsItem.innerHTML = `
+            <img src="${item.image}" alt="${item.title}" class="local-news-item-image">
+            <div class="local-news-item-content">
+                <h3>${item.title}</h3>
+                <p>${item.content}</p>
+                <p class="date">${item.date}</p>
+            </div>
+        `;
+    }
+
+    createNewsItem(newsItem);
+});
+
+
+
 // If you dont want people to search your website
 // if (document.referrer === "") {
     // window.location.href = "https://your-other-site.com"; // Redirect to another page if accessed directly
