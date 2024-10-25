@@ -245,14 +245,20 @@ h1 {
 
 .news-item-image {
     width: 100%;
-    height: 150px;
-}
+    height: 100%;
+    object-fit: cover;
+  }
+  
 
-.news-item-content {
-    padding: 1rem;
-    color: white;
+.news-item-image-container {
     width: 100%;
-}
+    height: 200px; /* Adjust this value as needed */
+    overflow: hidden;
+  }
+
+  .news-item-content {
+    padding: 15px;
+  }
 
 .news-item h3 {
     font-size: 1.25rem; /* Increase font size */
