@@ -39,11 +39,11 @@ async function fetchForecastData(location) {
 function getWeatherIcon(iconCode) {
     const iconMap = {
         '01d': '☀️', '01n': '☀️', // Changed '01n' to show sun emoji
-        '02d': '⛅', '02n': '☁️',
+        '02d': '⛅', '02n': '⛅',
         '03d': '☁️', '03n': '☁️',
         '04d': '☁️', '04n': '☁️',
         '09d': '🌧️', '09n': '🌧️',
-        '10d': '🌦️', '10n': '🌧️',
+        '10d': '🌧', '10n': '🌧',
         '11d': '⛈️', '11n': '⛈️',
         '13d': '❄️', '13n': '❄️',
         '50d': '🌫️', '50n': '🌫️'
@@ -119,15 +119,16 @@ async function updateWeather() {
 
     // Generate HTML for the news items
     newsGrid.innerHTML = limitedNewsItems.map((item, index) => `
-        <div class="news-item">
-            <div class="news-item-content">
-                <h3>
-                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-item-link">${item.title}</a>
-                </h3>
-                <p>${item.content}</p>
-            </div>
-        </div>
-    `).join('');
+  <div class="news-item">
+    ${item.image ? `<div class="news-item-image-container"><img src="${item.image}" alt="${item.title}" class="news-item-image"></div>` : ''}
+    <div class="news-item-content">
+      <h3>
+        <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-item-link">${item.title}</a>
+      </h3>
+      <p>${item.content}</p>
+    </div>
+  </div>
+`).join('');
 
     } catch (error) {
         console.error('Error fetching news:', error);
@@ -149,3 +150,4 @@ updateNews();
 // Auto-refresh every 5 minutes
 setInterval(updateWeather, 300000);
 setInterval(updateNews, 300000);
+    
