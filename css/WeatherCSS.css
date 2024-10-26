@@ -329,7 +329,6 @@ footer {
 .loading-animation {
     display: flex;
     align-items: center;
-    margin-top: 2rem;
     height: 100px;
     /* Adjust the height as needed */
     position: absolute;
@@ -351,6 +350,7 @@ footer {
     width: 40px;
     height: 40px;
     animation: spin 2s linear infinite;
+    margin-top: 2rem;
 }
 
 .notification {
