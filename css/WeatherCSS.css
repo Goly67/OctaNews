@@ -329,6 +329,7 @@ footer {
 .loading-animation {
     display: flex;
     align-items: center;
+    margin-top: 2rem;
     height: 100px;
     /* Adjust the height as needed */
     position: absolute;
