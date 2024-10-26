@@ -246,18 +246,20 @@ h1 {
 }
 
 .news-item-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; /* Make the image take the full width of the container */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Crop the image if it doesn't fit the container */
+    border-radius: 8px; /* Optional: rounded corners */
 }
 
 
 .news-item-image-container {
-    width: 100%;
-    height: 200px;
-    /* Adjust this value as needed */
-    overflow: hidden;
+    width: 100%; /* Full width of the parent */
+    height: 200px; /* Fixed height or adjust as needed */
+    overflow: hidden; /* Hide overflow if the image is too large */
+    border-radius: 8px; /* Optional: rounded corners */
 }
+
 
 .news-item-content {
     padding: 15px;
@@ -551,4 +553,9 @@ footer {
     border-radius: 15px;  /* Adjust to your preference */
     overflow: hidden;     /* Ensure the content stays within the rounded corners */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
+
+.separator {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Adjust color and thickness as needed */
+    margin: 2rem 0; /* Add spacing around the separator */
 }
