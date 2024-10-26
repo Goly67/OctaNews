@@ -70,7 +70,7 @@ async function updateWeather() {
     feelsLike.textContent = `${Math.round(weatherData.main.feels_like)}°C`;
     precipitation.textContent = weatherData.rain ? `${weatherData.rain['1h']}mm` : '0mm';
 
-    if (location === 'Manila') {
+    if (location === '#') {
         stormAlert.innerHTML = '<span>⚠️ </span> <em><strong><span style="color: red;"> SIGNAL NO. 2</span></strong></em>';
         stormAlert.style.display = 'flex';
     } else {
