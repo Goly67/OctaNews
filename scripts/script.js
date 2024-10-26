@@ -218,7 +218,7 @@ const worldNewsGrid = document.getElementById('worldNewsGrid');
 
 async function updateWorldNews() {
     const proxyUrl = 'https://octa-news-gma.glitch.me/proxy?url=';
-    const targetUrl = 'https://data.gmanetwork.com/gno/rss/news/world/feed.xml';
+    const targetUrl = 'https://data.gmanetwork.com/gno/rss/news/world/feed.xml'; // World News RSS feed
 
     try {
         const response = await fetch(proxyUrl + encodeURIComponent(targetUrl));
@@ -241,11 +241,12 @@ async function updateWorldNews() {
             link: item.querySelector('link')?.textContent || '#'
         }));
 
-        // Limit to the first 6 world news items
-        const limitedWorldNewsItems = newsItems.slice(0, 9);
+        // Limit to the first 6 news items
+        const limitedNewsItems = newsItems.slice(0, 9);
 
         // Generate HTML for the world news items
-        worldNewsGrid.innerHTML = limitedWorldNewsItems.map(item => `
+        const worldNewsGrid = document.getElementById('worldNewsGrid'); // Make sure to add this ID in your HTML
+        worldNewsGrid.innerHTML = limitedNewsItems.map(item => `
             <div class="news-item">
                 ${item.image ? `<div class="news-item-image-container"><img src="${item.image}" alt="${item.title}" class="news-item-image"></div>` : ''}
                 <div class="news-item-content">
@@ -256,16 +257,13 @@ async function updateWorldNews() {
                 </div>
             </div>
         `).join('');
-        
+
     } catch (error) {
         console.error('Error fetching world news:', error);
         worldNewsGrid.innerHTML = `<p>Error fetching world news: ${error.message}</p>`;
     }
-
-    // Hide the loading animation after the world news items are loaded
-    const loadingAnimation = document.querySelector('.loading-animation');
-    loadingAnimation.style.display = 'none';
 }
+
 
 // Call the updateWorldNews function alongside the existing updateNews function
 updateNews();
