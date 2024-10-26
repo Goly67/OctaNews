@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// If you dont want people to search your website
-// if (document.referrer === "") {
-    // window.location.href = "https://your-other-site.com"; // Redirect to another page if accessed directly
-// }
+// If done construction, put the message back
+ if (document.referrer === "") {
+     window.location.href = "https://goly67.github.io/OctaNews-UnderConstruction/"; // Redirect to another page if accessed directly
+ }
