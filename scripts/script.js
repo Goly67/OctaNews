@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         title: "Windy weather map available",
         content: "You can now see the map via Windy! a trusted source of mine that tracked the typhoon Odette back in 2021.",
         iframeSrc: "https://www.windy.com/?9.243,125.969,6,m:dVsajzk", // Replace with the actual iframe source you need
-        date: "2024-10-25"
+        date: "2024-10-26"
     };
 
     function createNewsItem(item) {
@@ -214,10 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
     createNewsItem(newsItem);
 });
 
-
-
-
-// If done construction, put the message back
- if (document.referrer === "") {
-     window.location.href = "https://goly67.github.io/OctaNews-UnderConstruction/"; // Redirect to another page if accessed directly
- }
+ // if (document.referrer === "") {
+     // window.location.href = "https://goly67.github.io/OctaNews-UnderConstruction/"; // Redirect to another page if accessed directly
+ // }
