@@ -328,17 +328,10 @@ footer {
 
 .loading-animation {
     display: flex;
+    justify-content: center;
     align-items: center;
-    height: 100px;
-    /* Adjust the height as needed */
-    position: absolute;
-    /* Position the animation absolutely */
-    top: 50%;
-    /* Position the animation at the top 50% of its parent */
-    left: 50%;
-    /* Position the animation at the left 50% of its parent */
-    transform: translate(-50%, -50%);
-    /* Center the animation using transform */
+    margin-top: 10px; /* Add some margin to separate it from text */
+    position: relative; /* Keeps it positioned below the text */
 }
 
 .spinner {
@@ -350,7 +343,6 @@ footer {
     width: 40px;
     height: 40px;
     animation: spin 2s linear infinite;
-    margin-top: 2rem;
 }
 
 .notification {
@@ -436,6 +428,9 @@ footer {
 @media (max-width: 768px) {
     .notification {
         display: none;
+    }
+    .loading-animation {
+        margin-top: 20px; /* Further separate it from the title */
     }
 }
 
