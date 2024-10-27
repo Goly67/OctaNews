@@ -552,3 +552,15 @@ footer {
     border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Adjust color and thickness as needed */
     margin: 2rem 0; /* Add spacing around the separator */
 }
+
+@keyframes flashing {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.flashing-live {
+    color: red;
+    font-weight: bold;
+    animation: flashing 1s infinite;
+}
