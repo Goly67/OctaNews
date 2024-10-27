@@ -563,4 +563,5 @@ footer {
     color: red;
     font-weight: bold;
     animation: flashing 1s infinite;
+    font-size: 1.6rem;
 }
