@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Define your single news item here
     const newsItem = {
         title: "Windy weather map available",
-        content: "Track the latest tropical storm Leon! We have updated the windy weather map to let you see the tropical storm Leon.",
+        content: "Track the latest tropical storm Leon! We have updated the windy weather map to let you monitor the tropical storm Leon LIVE!",
         iframeSrc: "https://www.windy.com/?9.243,125.969,6,m:dVsajzk", // Replace with the actual iframe source you need
         date: "2024-10-27"
     };
