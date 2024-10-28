@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <iframe 
                     class="windy-iframe" 
                     width="100%" 
-                    height="450" 
+                    height="900" 
                     src="https://embed.windy.com/embed2.html?lat=9.243&lon=125.969&zoom=6&level=surface&overlay=rain&menu=&message=true&marker=&calendar=&pressure=true&type=map&location=coordinates&detail=&detailLat=9.243&detailLon=125.969&metricWind=km/h&metricTemp=%C2%B0C&radarRange=-1"
                     frameborder="0">
                 </iframe>
