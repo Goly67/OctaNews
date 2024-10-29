@@ -273,5 +273,5 @@ updateWorldNews();
 setInterval(updateWorldNews, 300000);
  
    if (document.referrer === "") {
-       window.location.href = "https://goly67.github.io/OctaNews-UnderConstruction/";  Redirect to another page if accessed directly
+       window.location.href = "https://goly67.github.io/OctaNews-UnderConstruction/"; // Redirect to another page if accessed directly
    }
