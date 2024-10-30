@@ -187,9 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Define your single news item here
     const newsItem = {
         title: "Windy weather map available",
-        content: "Track the latest tropical storm Leon! We have updated the windy weather map to let you monitor the tropical storm Leon LIVE!",
+        content: "You can now see the map via Windy! a trusted source of mine that tracked the typhoon Odette back in 2021.",
         iframeSrc: "https://www.windy.com/?9.243,125.969,6,m:dVsajzk", // Replace with the actual iframe source you need
-        date: "The map updates every hour."
+        date: "2024-10-26"
     };
 
     function createNewsItem(item) {
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <iframe 
                     class="windy-iframe" 
                     width="100%" 
-                    height="900" 
+                    height="450" 
                     src="https://embed.windy.com/embed2.html?lat=9.243&lon=125.969&zoom=6&level=surface&overlay=rain&menu=&message=true&marker=&calendar=&pressure=true&type=map&location=coordinates&detail=&detailLat=9.243&detailLon=125.969&metricWind=km/h&metricTemp=%C2%B0C&radarRange=-1"
                     frameborder="0">
                 </iframe>
@@ -264,6 +264,15 @@ async function updateWorldNews() {
     }
 }
 
+window.addEventListener('resize', () => {
+    const iframe = document.querySelector('.windy-iframe iframe');
+    if (window.innerWidth < 768) {
+        iframe.style.height = '300px';  // Adjust height for mobile
+    } else {
+        iframe.style.height = '400px';  // Desktop fallback
+    }
+});
+
 
 // Call the updateWorldNews function alongside the existing updateNews function
 updateNews();
@@ -271,7 +280,7 @@ updateWorldNews();
 
 // Auto-refresh world news every 5 minutes
 setInterval(updateWorldNews, 300000);
- 
-   if (document.referrer === "") {
-       window.location.href = "https://goly67.github.io/OctaNews-UnderConstruction/"; // Redirect to another page if accessed directly
-   }
+
+// if (document.referrer === "") {
+      // window.location.href = "https://goly67.github.io/OctaNews-UnderConstruction/"; // Redirect to another page if accessed directly
+  // }
