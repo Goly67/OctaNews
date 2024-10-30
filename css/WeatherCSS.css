@@ -592,12 +592,13 @@ footer {
     border-radius: 8px;
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
     .windy-iframe {
-        max-height: 300px; /* Further constrain height on mobile */
+        height: 40rem; /* Use the same height as desktop */
+        max-height: none; /* Remove the max height limit */
     }
 }
+
 
 @media (max-width: 480px) {
     .windy-iframe {
@@ -605,6 +606,7 @@ footer {
         max-height: 250px; /* Limit height on phones */
     }
 }
+
 
 
 .separator {

@@ -273,6 +273,11 @@ window.addEventListener('resize', () => {
     }
 });
 
+function reloadIframe() {
+    const iframe = document.querySelector('.windy-iframe-container iframe');
+    iframe.src = iframe.src; // Reload the iframe
+}
+
 
 // Call the updateWorldNews function alongside the existing updateNews function
 updateNews();
