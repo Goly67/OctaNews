@@ -543,11 +543,12 @@ footer {
 }
 
 .windy-iframe {
-    border-radius: 15px;  /* Adjust to your preference */
-    overflow: hidden;     /* Ensure the content stays within the rounded corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-    height: 40rem;
+    width: 100%;      /* Full width */
+    height: 450px;   /* Default height */
+    border: none;    /* No border */
+    border-radius: 10px;
 }
+
 
 .windy-iframe2 {
     border-radius: 15px;  /* Adjust to your preference */
@@ -594,7 +595,7 @@ footer {
 
 @media (max-width: 768px) {
     .windy-iframe {
-        height: 40rem; /* Use the same height as desktop */
+        height: 30rem; /* Use the same height as desktop */
         max-height: none; /* Remove the max height limit */
     }
 }

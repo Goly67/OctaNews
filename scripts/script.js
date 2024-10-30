@@ -278,6 +278,13 @@ function reloadIframe() {
     iframe.src = iframe.src; // Reload the iframe
 }
 
+const iframe = document.querySelector('.windy-iframe');
+iframe.onerror = function() {
+    console.error('Error loading Windy iframe');
+    // Optionally, you can provide a fallback or retry logic here
+};
+
+
 
 // Call the updateWorldNews function alongside the existing updateNews function
 updateNews();
