@@ -243,6 +243,12 @@ async function updateWorldNews() {
 
         // Limit to the first 6 news items
         const limitedNewsItems = newsItems.slice(0, 9);
+        
+    } catch (error) {
+        console.error('Error fetching world news:', error);
+        worldNewsGrid.innerHTML = `<p>Error fetching world news: ${error.message}</p>`;
+    }
+}
 
 window.addEventListener('resize', () => {
     const iframe = document.querySelector('.windy-iframe iframe');
@@ -268,6 +274,7 @@ iframe.onerror = function() {
 
 // Call the updateWorldNews function alongside the existing updateNews function
 updateNews();
+updateWorldNews();
 
 // Auto-refresh world news every 5 minutes
 setInterval(updateWorldNews, 300000);
