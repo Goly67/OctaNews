@@ -244,26 +244,6 @@ async function updateWorldNews() {
         // Limit to the first 6 news items
         const limitedNewsItems = newsItems.slice(0, 9);
 
-        // Generate HTML for the world news items
-        const worldNewsGrid = document.getElementById('worldNewsGrid'); // Make sure to add this ID in your HTML
-        worldNewsGrid.innerHTML = limitedNewsItems.map(item => `
-            <div class="news-item">
-                ${item.image ? `<div class="news-item-image-container"><img src="${item.image}" alt="${item.title}" class="news-item-image"></div>` : ''}
-                <div class="news-item-content">
-                    <h3>
-                        <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-item-link">${item.title}</a>
-                    </h3>
-                    <p>${item.content}</p>
-                </div>
-            </div>
-        `).join('');
-
-    } catch (error) {
-        console.error('Error fetching world news:', error);
-        worldNewsGrid.innerHTML = `<p>Error fetching world news: ${error.message}</p>`;
-    }
-}
-
 window.addEventListener('resize', () => {
     const iframe = document.querySelector('.windy-iframe iframe');
     if (window.innerWidth < 768) {
@@ -288,7 +268,6 @@ iframe.onerror = function() {
 
 // Call the updateWorldNews function alongside the existing updateNews function
 updateNews();
-updateWorldNews();
 
 // Auto-refresh world news every 5 minutes
 setInterval(updateWorldNews, 300000);
