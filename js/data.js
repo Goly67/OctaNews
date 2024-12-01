@@ -132,9 +132,13 @@ if (navigator.geolocation) {
 
             // Use IP-API to get country and region based on coordinates
             fetch(`https://ip-api.com/xml/?lat=${latitude}&lon=${longitude}&fields=country,regionName`)
-    .then(response => response.text())  // Use .text() to handle XML response
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch data from IP API');
+        }
+        return response.text();  // Use .text() to handle XML response
+    })
     .then(data => {
-        // Parse the XML response
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(data, "application/xml");
 
@@ -155,8 +159,6 @@ if (navigator.geolocation) {
         console.error('Error fetching country and region data:', error);
         countryRegionElement.textContent = 'Error retrieving location';
     });
-
-
         },
         function(error) {
             // Handle location access denied or error
