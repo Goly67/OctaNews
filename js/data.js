@@ -131,24 +131,15 @@ if (navigator.geolocation) {
             const longitude = position.coords.longitude;
 
             // Use IP-API to get country and region based on coordinates
-            fetch(`https://ip-api.com/xml/?lat=${latitude}&lon=${longitude}&fields=country,regionName`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to fetch data from IP API');
-        }
-        return response.text();  // Use .text() to handle XML response
-    })
+            fetch(`https://news-country-logger.glitch.me/get-location?lat=${latitude}&lon=${longitude}`)
+    .then(response => response.text())
     .then(data => {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(data, "application/xml");
 
-        const countryElement = xmlDoc.getElementsByTagName("country")[0];
-        const regionElement = xmlDoc.getElementsByTagName("regionName")[0];
+        const country = xmlDoc.getElementsByTagName("country")[0]?.textContent;
+        const region = xmlDoc.getElementsByTagName("regionName")[0]?.textContent;
 
-        const country = countryElement ? countryElement.textContent : null;
-        const region = regionElement ? regionElement.textContent : null;
-
-        // Display the country and region
         if (country && region) {
             countryRegionElement.textContent = `${country}, ${region}`;
         } else {
@@ -159,6 +150,7 @@ if (navigator.geolocation) {
         console.error('Error fetching country and region data:', error);
         countryRegionElement.textContent = 'Error retrieving location';
     });
+
         },
         function(error) {
             // Handle location access denied or error
