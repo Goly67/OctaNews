@@ -293,6 +293,8 @@ updateWorldNews();
 // Auto-refresh world news every 5 minutes
 setInterval(updateWorldNews, 300000);
 
- if (document.referrer === "") {
-       window.location.href = "https://goly67.github.io/OctaNewsWeb/"; // Redirect to another page if accessed directly
- }
+window.onload = function() {
+    if (document.referrer === "") {
+        window.location.href = "https://goly67.github.io/OctaNewsWeb/";
+    }
+};
