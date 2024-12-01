@@ -1,0 +1,271 @@
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.top-bar {
+    background: var(--primary-color);
+    padding: 8px 0;
+    font-size: 0.9rem;
+}
+
+.top-bar-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+}
+
+.current-date {
+    font-weight: 500;
+}
+
+.weather {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.weather i {
+    color: #ffd700;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 1rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    opacity: 1;
+}
+
+.header-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.logo-text {
+    font-family: var(--header-font);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+}
+
+.logo-highlight {
+    font-family: var(--header-font);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--secondary-color);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.clock {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--header-font);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+}
+
+.country-region {
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    flex-grow: 1; /* This makes the country/region text take center space */
+    font-weight: bold;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: var(--light-gray);
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.search-box input {
+    border: none;
+    background: none;
+    padding: 8px 12px;
+    width: 200px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.search-box button {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #666;
+}
+
+.subscribe-btn {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    background-color: #a30000;
+}
+
+.nav {
+    border-top: 1px solid var(--border-color);
+    background: white;
+}
+
+.nav-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 1rem 0;
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav a:hover {
+    color: var(--secondary-color);
+}
+
+.nav a.active {
+    color: var(--secondary-color);
+}
+
+.nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .top-bar-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-right {
+        display: none;
+    }
+
+    .clock {
+        left: 50%;
+        transform: translateX(-15%);
+        font-size: 1.7rem;  /* Slightly smaller font size for tablets */
+    }
+
+    .logo-text,
+    .logo-highlight {
+        font-size: 2rem;
+    }
+
+    .nav ul {
+        gap: 1rem;
+        overflow-x: auto;
+        padding: 0.5rem 0;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start; /* Align items to the left */
+    }
+
+    .nav a {
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .search-box input {
+        width: 150px; /* Adjust search box width for smaller screens */
+    }
+
+    .subscribe-btn {
+        padding: 8px 16px; /* Reduce padding for buttons on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar {
+        font-size: 0.8rem;
+    }
+
+    .clock {
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1rem;  /* Further reduce font size for mobile screens */
+    }
+
+    .logo-text,
+    .logo-highlight {
+        font-size: 1.8rem;
+    }
+
+    .search-box input {
+        width: 120px; /* Adjust search box for very small screens */
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .nav a {
+        font-size: 0.75rem;
+        padding: 0.8rem 0;
+    }
+
+    .subscribe-btn {
+        padding: 6px 12px; /* Further reduce button padding on very small screens */
+    }
+}

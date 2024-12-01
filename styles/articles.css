@@ -1,0 +1,287 @@
+/* Featured Article Card */
+.featured-article-card {
+    display: grid; /* Use a grid layout */
+    grid-template-columns: 1.5fr 2fr; /* Image (left) and content (right) */
+    align-items: center; /* Center the items vertically */
+    gap: 20px; /* Add space between image and content */
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Optional: Add some internal padding */
+}
+
+/* Image Styling */
+.featured-article-card img {
+    width: 100%; /* Ensure the image spans the column width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image scales properly */
+    border-radius: 12px; /* Optional: Make image corners rounded */
+}
+
+/* Content Styling */
+.featured-article-card .content {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center the content vertically */
+    padding: 10px;
+}
+
+.featured-article-card .content .category {
+    text-align: center;
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+    border-radius: 50px;
+}
+
+.featured-article-card .content .news-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.featured-article-card .content .contents {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.featured-article-card .content .timestamp {
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .featured-article-card {
+        grid-template-columns: 1fr; /* Stack image and content vertically */
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+
+    .featured-article-card .content .news-title {
+        font-size: 1.5rem; /* Adjust title size */
+    }
+
+    .featured-article-card .content .contents {
+        font-size: 1rem; /* Adjust content text size */
+    }
+
+    .featured-article-card .content .timestamp {
+        font-size: 0.9rem; /* Adjust timestamp size */
+        margin-top: 1.5rem; /* Reduce margin for better alignment */
+    }
+}
+
+@media (max-width: 480px) {
+    .featured-article-card {
+        padding: 10px; /* Further reduce padding on very small screens */
+    }
+
+    .featured-article-card .content .news-title {
+        font-size: 1.3rem; /* Make title smaller for mobile devices */
+    }
+
+    .featured-article-card .content .contents {
+        font-size: 0.9rem; /* Reduce content text size */
+    }
+
+    .featured-article-card .content .timestamp {
+        font-size: 0.8rem; /* Further reduce timestamp size */
+        margin-top: 1rem; /* Adjust margin for better alignment */
+    }
+}
+
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.article-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.article-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.article-card:hover img {
+    transform: scale(1.05);
+}
+
+.article-card .content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Style for h3 tag */
+.news-title {
+    font-family: var(--header-font) !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px !important;
+    line-height: 1.4 !important;
+    color: #333 !important; /* Default color */
+    text-transform: capitalize !important;
+    text-decoration: none !important; /* Remove underline */
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for h3 title */
+.news-title:hover {
+    color: red !important; /* Hover to red */
+}
+
+/* Active effect to keep the title red after click */
+.news-title:active {
+    color: red !important; /* Stay red after click */
+}
+
+/* Style for the link inside h3 */
+.news-title a {
+    color: inherit !important;  /* Inherit color from h3 */
+    text-decoration: none !important; /* Remove underline */
+}
+
+/* Style for h3 tag */
+.featured-title {
+    font-family: var(--header-font) !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px !important;
+    line-height: 1.4 !important;
+    color: #333 !important; /* Default color */
+    text-transform: capitalize !important;
+    text-decoration: none !important; /* Remove underline */
+    transition: color 0.3s ease;
+}
+
+/* Style for the link inside h3 */
+.featured-title a {
+    color: inherit !important;  /* Inherit color from h3 */
+    text-decoration: none !important; /* Remove underline */
+}
+
+/* Ensure headline styling is applied to .article-card h3 */
+.article-card h3 {
+    font-family: var(--header-font) !important; /* Make sure this is applied */
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px !important;
+    line-height: 1.4 !important;
+    color: var(--primary-color) !important; /* Set the color */
+    text-transform: capitalize !important; /* Optional, to capitalize title */
+}
+
+/* Styling for articles grid */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust as per your design */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Styling for the old news grid (ensure it uses the same grid style) */
+#old-news {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Same grid layout */
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.contents {
+    margin-top: 18px;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: -7px;
+    line-height: 1.7;
+    flex-grow: 1;
+}
+
+/* Move the category below the image */
+.category {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 15px; /* Adjust margin to space it properly */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timestamp {
+    font-size: 0.9rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.timestamp::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background-color: #999;
+    border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+    .featured-article {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-article img {
+        height: 400px;
+    }
+    
+    .featured-article .content {
+        padding: 30px;
+    }
+    
+    .featured-article h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .article-card img {
+        height: 200px;
+    }
+}
+
