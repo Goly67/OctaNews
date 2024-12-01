@@ -103,46 +103,6 @@
     font-weight: bold;
 }
 
-.search-box {
-    display: flex;
-    align-items: center;
-    background: var(--light-gray);
-    border-radius: 4px;
-    padding: 5px;
-}
-
-.search-box input {
-    border: none;
-    background: none;
-    padding: 8px 12px;
-    width: 200px;
-    font-size: 0.9rem;
-    outline: none;
-}
-
-.search-box button {
-    background: none;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    color: #666;
-}
-
-.subscribe-btn {
-    background: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.subscribe-btn:hover {
-    background-color: #a30000;
-}
-
 .nav {
     border-top: 1px solid var(--border-color);
     background: white;
@@ -225,14 +185,6 @@
         font-size: 0.85rem;
         white-space: nowrap;
     }
-
-    .search-box input {
-        width: 150px; /* Adjust search box width for smaller screens */
-    }
-
-    .subscribe-btn {
-        padding: 8px 16px; /* Reduce padding for buttons on mobile */
-    }
 }
 
 @media (max-width: 480px) {
@@ -241,9 +193,9 @@
     }
 
     .clock {
-        left: 50%;
+        left: 60%;
         transform: translateX(-50%);
-        font-size: 1rem;  /* Further reduce font size for mobile screens */
+        font-size: 1.4rem;  /* Further reduce font size for mobile screens */
     }
 
     .logo-text,
@@ -263,9 +215,5 @@
     .nav a {
         font-size: 0.75rem;
         padding: 0.8rem 0;
-    }
-
-    .subscribe-btn {
-        padding: 6px 12px; /* Further reduce button padding on very small screens */
     }
 }
