@@ -7,38 +7,45 @@ const featuredNews = {
     timestamp: new Date().toLocaleDateString() // This will only display the date
 };
 
-// Function to fetch and parse RSS feed
+// Country code to full name mapping
+const countryNameMap = {
+    "PH": "Philippines",
+    "US": "United States",
+    "GB": "United Kingdom",
+    "CA": "Canada",
+    "AU": "Australia",
+    "IN": "India",
+    "FR": "France",
+    "DE": "Germany",
+    // Add more country codes as needed
+};
+
+// Function to fetch news
 async function fetchNews(url) {
     const proxyUrl = 'https://octa-news-gma.glitch.me/proxy?url=';
-
     const response = await fetch(proxyUrl + encodeURIComponent(url));
     if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.statusText}`);
     }
-
     const data = await response.text();
-
-    // Parse the RSS feed data
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(data, 'text/xml');
-
     const items = xmlDoc.querySelectorAll('item');
     return Array.from(items).map(item => ({
         title: item.querySelector('title')?.textContent || 'No title',
         content: item.querySelector('description')?.textContent || 'No description',
         image: item.querySelector('media\\:thumbnail')?.getAttribute('url') || '',
-        link: item.querySelector('link')?.textContent || '#', // Ensure this is a link to the article, not the feed
-        category: 'National News' // Default category or can be changed based on source
+        link: item.querySelector('link')?.textContent || '#',
+        category: 'National News'
     }));
 }
 
 // Updated JavaScript to handle World News
 async function updateNews() {
     try {
-        // Fetch National News, Showbiz News, and World News
         const nationalNewsUrl = 'https://data.gmanetwork.com/gno/rss/news/feed.xml';
         const showbizNewsUrl = 'https://data.gmanetwork.com/gno/rss/showbiz/feed.xml';
-        const worldNewsUrl = 'https://data.gmanetwork.com/gno/rss/news/world/feed.xml'; // Example World News feed
+        const worldNewsUrl = 'https://data.gmanetwork.com/gno/rss/news/world/feed.xml';
 
         const [nationalNews, showbizNews, worldNews] = await Promise.all([
             fetchNews(nationalNewsUrl),
@@ -46,36 +53,66 @@ async function updateNews() {
             fetchNews(worldNewsUrl)
         ]);
 
-        // Generate HTML for the latest news (first 6 from both National and Showbiz)
         const articlesGrid = document.getElementById('articles');
         articlesGrid.innerHTML = nationalNews.slice(0, 6).map(item => `
             <div class="article-card">
-                ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''} <!-- Image -->
+                ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''}
                 <div class="content">
-                    <span class="category">${item.category}</span> <!-- Category below the image -->
-                    <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3> <!-- Title -->
+                    <span class="category">${item.category}</span>
+                    <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
                     <p class="contents">${item.content}</p>
                 </div>
             </div>
         `).join('');
 
-        // Generate HTML for the old news section (next 9 articles)
         const oldNewsGrid = document.getElementById('old-news');
         oldNewsGrid.innerHTML = nationalNews.slice(6, 12).map(item => `
             <div class="article-card">
-                ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''} <!-- Image -->
+                ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''}
                 <div class="content">
-                    <span class="category">${item.category}</span> <!-- Category below the image -->
-                    <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3> <!-- Title -->
+                    <span class="category">${item.category}</span>
+                    <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
                     <p class="contents">${item.content}</p>
                 </div>
             </div>
         `).join('');
+
+        // Use IP info to get country based on IP
+        const countryRegionElement = document.getElementById('country-region');
+        fetch('https://ipinfo.io/json?token=0dabbe9b8881ab')
+            .then(response => response.json())
+            .then(data => {
+                const countryCode = data.country;
+                const countryName = countryNameMap[countryCode] || countryCode; // Use the code if no full name found
+
+                countryRegionElement.textContent = countryName ? `${countryName}` : 'Location not found';
+            })
+            .catch(error => {
+                countryRegionElement.textContent = 'Error fetching location data';
+                console.error('IP info error:', error);
+            });
+
     } catch (error) {
         console.error('Error fetching news:', error);
         const articlesGrid = document.getElementById('articles');
         articlesGrid.innerHTML = `<p>Error fetching news: ${error.message}</p>`;
     }
+}
+
+// Function to display featured news
+function displayFeaturedNews() {
+    const featuredSection = document.getElementById('featured');
+    featuredSection.innerHTML = `
+        <div class="featured-article-card">
+            ${featuredNews.image ? `<img src="${featuredNews.image}" alt="${featuredNews.title}" />` : ''}
+            <div class="content">
+                <span class="category">${featuredNews.category}</span>
+                <h3 class="featured-title">${featuredNews.title}</h3>
+                <p class="contents">${featuredNews.content}</p>
+                <span class="timestamp">${featuredNews.timestamp}</span>
+            </div>
+        </div>
+    `;
 }
 
 // Function to display featured news
@@ -118,52 +155,6 @@ function updateClock() {
     
     // Set the clock text
     clockElement.textContent = `${hours}:${minutes}:${seconds} ${period}`;
-}
-
-const countryRegionElement = document.getElementById('country-region');
-
-// Check if geolocation is available
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-        function(position) {
-            // Get the user's latitude and longitude
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-
-            // Use IP-API to get country and region based on coordinates
-            fetch(`https://news-country-logger.glitch.me/get-location?lat=${latitude}&lon=${longitude}`)
-    .then(response => response.text())
-    .then(data => {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(data, "application/xml");
-
-        const country = xmlDoc.getElementsByTagName("country")[0]?.textContent;
-        const region = xmlDoc.getElementsByTagName("regionName")[0]?.textContent;
-
-        if (country && region) {
-            countryRegionElement.textContent = `${country}, ${region}`;
-        } else {
-            countryRegionElement.textContent = 'Unknown Location';
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching country and region data:', error);
-        countryRegionElement.textContent = 'Error retrieving location';
-    });
-
-        },
-        function(error) {
-            // Handle location access denied or error
-            if (error.code === error.PERMISSION_DENIED) {
-                countryRegionElement.textContent = 'Location blocked'; // Show "Location blocked" if permission is denied
-            } else {
-                countryRegionElement.textContent = 'Error retrieving location'; // Handle other errors
-            }
-        }
-    );
-} else {
-    // Fallback if geolocation is not available
-    countryRegionElement.textContent = 'Geolocation not available';
 }
 
 // Update the news section when the page loads
