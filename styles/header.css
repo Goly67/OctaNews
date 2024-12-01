@@ -193,7 +193,7 @@
     }
 
     .clock {
-        left: 60%;
+        left: 59%;
         transform: translateX(-50%);
         font-size: 1.4rem;  /* Further reduce font size for mobile screens */
     }
@@ -201,10 +201,6 @@
     .logo-text,
     .logo-highlight {
         font-size: 1.8rem;
-    }
-
-    .search-box input {
-        width: 120px; /* Adjust search box for very small screens */
     }
 
     .nav ul {
