@@ -1,3 +1,7 @@
+window.onload = function() {
+    window.location.href = "https://goly67.github.io/OctaNewsWeb/";
+};
+
 // Select DOM elements once at the top
 const burgerMenu = document.querySelector('.burger-menu');
 const navMenu = document.querySelector('.nav-menu');
