@@ -1,3 +1,7 @@
+window.onload = function() {
+    window.location.href = "https://goly67.github.io/OctaNewsWeb/";
+};
+
 const API_KEY = '045ac4f01f984ff68820a4943e6592bd';
 const locationSelect = document.getElementById('locationSelect');
 const selectedLocation = document.getElementById('selectedLocation');
@@ -292,9 +296,3 @@ updateWorldNews();
 
 // Auto-refresh world news every 5 minutes
 setInterval(updateWorldNews, 300000);
-
-window.onload = function() {
-    if (document.referrer === "") {
-        window.location.href = "https://goly67.github.io/OctaNewsWeb/";
-    }
-};
