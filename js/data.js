@@ -131,26 +131,27 @@ if (navigator.geolocation) {
             const longitude = position.coords.longitude;
 
             // Use IP-API to get country and region based on coordinates
-            fetch(`http://ip-api.com/xml/?lat=${latitude}&lon=${longitude}&fields=country,regionName`)
-                .then(response => response.text())  // Use .text() to handle XML response
-                .then(data => {
-                    // Parse the XML response
-                    const parser = new DOMParser();
-                    const xmlDoc = parser.parseFromString(data, "application/xml");
-                    const country = xmlDoc.getElementsByTagName("country")[0].textContent;
-                    const region = xmlDoc.getElementsByTagName("regionName")[0].textContent;
+            fetch(`https://ip-api.com/xml/?lat=${latitude}&lon=${longitude}&fields=country,regionName`)  // Changed to https
+    .then(response => response.text())  // Use .text() to handle XML response
+    .then(data => {
+        // Parse the XML response
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(data, "application/xml");
+        const country = xmlDoc.getElementsByTagName("country")[0].textContent;
+        const region = xmlDoc.getElementsByTagName("regionName")[0].textContent;
 
-                    // Display the country and region
-                    if (country && region) {
-                        countryRegionElement.textContent = `${country}, ${region}`;
-                    } else {
-                        countryRegionElement.textContent = 'Unknown Location';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching country and region data:', error);
-                    countryRegionElement.textContent = 'Error retrieving location';
-                });
+        // Display the country and region
+        if (country && region) {
+            countryRegionElement.textContent = `${country}, ${region}`;
+        } else {
+            countryRegionElement.textContent = 'Unknown Location';
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching country and region data:', error);
+        countryRegionElement.textContent = 'Error retrieving location';
+    });
+
         },
         function(error) {
             // Handle location access denied or error
