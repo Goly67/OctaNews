@@ -1,3 +1,7 @@
+window.onload = function() {
+    window.location.href = "https://goly67.github.io/OctaNewsWeb/";
+};
+
 const newsGrid = document.getElementById('newsGrid');
 const loadingElement = document.getElementById('loading');
 const errorElement = document.getElementById('error');
