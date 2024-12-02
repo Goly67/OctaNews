@@ -99,11 +99,11 @@ function renderFeaturedNews() {
     const featuredContainer = document.getElementById('featured');
     const featuredArticleHTML = `
         <div class="featured-article-card">
+            <span class="category">${featuredNews.category}</span>
             <img src="${featuredNews.image}" alt="Featured News">
             <div class="content">
                 <h2>${featuredNews.title}</h2>
                 <p>${featuredNews.content}</p>
-                <span class="category">${featuredNews.category}</span>
                 <span class="timestamp">${featuredNews.timestamp}</span>
             </div>
         </div>
