@@ -44,12 +44,10 @@ async function fetchNews(url) {
 async function updateNews() {
     try {
         const nationalNewsUrl = 'https://data.gmanetwork.com/gno/rss/news/feed.xml';
-        const showbizNewsUrl = 'https://data.gmanetwork.com/gno/rss/showbiz/feed.xml';
         const worldNewsUrl = 'https://data.gmanetwork.com/gno/rss/news/world/feed.xml';
 
         const [nationalNews, showbizNews, worldNews] = await Promise.all([
             fetchNews(nationalNewsUrl),
-            fetchNews(showbizNewsUrl),
             fetchNews(worldNewsUrl)
         ]);
 
@@ -71,19 +69,6 @@ async function updateNews() {
                 ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''}
                 <div class="content">
                     <span class="category">World News</span>
-                    <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
-                    <p class="contents">${item.content}</p>
-                </div>
-            </div>
-        `).join('');
-
-        // Showbiz carousel updates
-        const showbizCarousel = document.getElementById('showbiz-carousel');
-        showbizCarousel.innerHTML = showbizNews.slice(0, 6).map(item => `
-            <div class="article-card">
-                ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''}
-                <div class="content">
-                    <span class="category">Showbiz</span>
                     <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
                     <p class="contents">${item.content}</p>
                 </div>
