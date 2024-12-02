@@ -209,13 +209,12 @@
 }
 
 /* Styling for the old news grid (ensure it uses the same grid style) */
-#old-news {
+#world-news {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Same grid layout */
     gap: 20px;
     padding: 20px;
 }
-
 
 .contents {
     margin-top: 18px;

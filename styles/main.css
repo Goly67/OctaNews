@@ -15,12 +15,48 @@
     --body-font: 'Source Sans Pro', sans-serif;
 }
 
+@keyframes snowfall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
 body {
     font-family: var(--body-font);
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--light-gray);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23c40000' fill-opacity='0.1'%3E%3Cpath d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
+
+body::before,
+body::after {
+    content: none;
+}
+
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: #fff;
+    text-shadow: 0 0 5px #000;
+    animation: snowfall linear infinite;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.snowflake:nth-child(1) { left: 10%; font-size: 20px; animation-duration: 10s; animation-delay: -2s; }
+.snowflake:nth-child(2) { left: 20%; font-size: 16px; animation-duration: 12s; animation-delay: -1s; }
+.snowflake:nth-child(3) { left: 30%; font-size: 18px; animation-duration: 9s; animation-delay: -3s; }
+.snowflake:nth-child(4) { left: 40%; font-size: 22px; animation-duration: 11s; animation-delay: -4s; }
+.snowflake:nth-child(5) { left: 50%; font-size: 14px; animation-duration: 13s; animation-delay: -2.5s; }
+.snowflake:nth-child(6) { left: 60%; font-size: 19px; animation-duration: 10.5s; animation-delay: -1.5s; }
+.snowflake:nth-child(7) { left: 70%; font-size: 17px; animation-duration: 11.5s; animation-delay: -3.5s; }
+.snowflake:nth-child(8) { left: 80%; font-size: 21px; animation-duration: 9.5s; animation-delay: -0.5s; }
+.snowflake:nth-child(9) { left: 90%; font-size: 15px; animation-duration: 12.5s; animation-delay: -2.8s; }
+.snowflake:nth-child(10) { left: 95%; font-size: 23px; animation-duration: 10.8s; animation-delay: -1.8s; }
+
 
 main {
     max-width: 1300px;

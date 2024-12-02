@@ -133,23 +133,46 @@
     letter-spacing: 0.5px;
 }
 
-.nav a:hover {
-    color: var(--secondary-color);
+/* Styles for hovered or active navigation links */
+.nav a:hover, .nav a.active {
+    color: #ffd700;
 }
 
-.nav a.active {
-    color: var(--secondary-color);
-}
-
+/* Styles for the pseudo-element after active navigation links */
 .nav a.active::after {
+    background-color: #ffd700;
+}
+
+/* Add Christmas lights to the header */
+.header::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--secondary-color);
+    right: 0;
+    height: 5px;
+    background: repeating-linear-gradient(
+        to right,
+        #ff0000 0px,
+        #ff0000 10px,
+        #00ff00 10px,
+        #00ff00 20px,
+        #0000ff 20px,
+        #0000ff 30px
+    );
+    animation: christmas-lights 650ms ease-in-out infinite;
 }
+
+/* Keyframes for the christmas lights animation */
+@keyframes christmas-lights {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
@@ -186,6 +209,7 @@
         white-space: nowrap;
     }
 }
+
 
 @media (max-width: 480px) {
     .top-bar {

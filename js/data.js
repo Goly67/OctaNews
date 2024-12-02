@@ -58,79 +58,78 @@ async function updateNews() {
             <div class="article-card">
                 ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''}
                 <div class="content">
-                    <span class="category">${item.category}</span>
+                    <span class="category">National News</span>
                     <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
                     <p class="contents">${item.content}</p>
                 </div>
             </div>
         `).join('');
 
-        const oldNewsGrid = document.getElementById('old-news');
-        oldNewsGrid.innerHTML = nationalNews.slice(6, 12).map(item => `
+        const worldNewsGrid = document.getElementById('world-news');
+        worldNewsGrid.innerHTML = worldNews.slice(6, 12).map(item => `
             <div class="article-card">
                 ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''}
                 <div class="content">
-                    <span class="category">${item.category}</span>
+                    <span class="category">World News</span>
                     <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
                     <p class="contents">${item.content}</p>
                 </div>
             </div>
         `).join('');
 
-        // Use IP info to get country based on IP
-        const countryRegionElement = document.getElementById('country-region');
-        fetch('https://ipinfo.io/json?token=0dabbe9b8881ab')
-            .then(response => response.json())
-            .then(data => {
-                const countryCode = data.country;
-                const countryName = countryNameMap[countryCode] || countryCode; // Use the code if no full name found
-
-                countryRegionElement.textContent = countryName ? `${countryName}` : 'Location not found';
-            })
-            .catch(error => {
-                countryRegionElement.textContent = 'Error fetching location data';
-                console.error('IP info error:', error);
-            });
-
+        // Showbiz carousel updates
+        const showbizCarousel = document.getElementById('showbiz-carousel');
+        showbizCarousel.innerHTML = showbizNews.slice(0, 6).map(item => `
+            <div class="article-card">
+                ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''}
+                <div class="content">
+                    <span class="category">Showbiz</span>
+                    <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
+                    <p class="contents">${item.content}</p>
+                </div>
+            </div>
+        `).join('');
     } catch (error) {
         console.error('Error fetching news:', error);
-        const articlesGrid = document.getElementById('articles');
-        articlesGrid.innerHTML = `<p>Error fetching news: ${error.message}</p>`;
     }
 }
 
-// Function to display featured news
-function displayFeaturedNews() {
-    const featuredSection = document.getElementById('featured');
-    featuredSection.innerHTML = `
+// Add featured article section
+function renderFeaturedNews() {
+    const featuredContainer = document.getElementById('featured');
+    const featuredArticleHTML = `
         <div class="featured-article-card">
-            ${featuredNews.image ? `<img src="${featuredNews.image}" alt="${featuredNews.title}" />` : ''}
+            <img src="${featuredNews.image}" alt="Featured News">
             <div class="content">
+                <h2>${featuredNews.title}</h2>
+                <p>${featuredNews.content}</p>
                 <span class="category">${featuredNews.category}</span>
-                <h3 class="featured-title">${featuredNews.title}</h3>
-                <p class="contents">${featuredNews.content}</p>
                 <span class="timestamp">${featuredNews.timestamp}</span>
             </div>
         </div>
     `;
+    featuredContainer.innerHTML = featuredArticleHTML;
 }
 
-// Function to display featured news
-function displayFeaturedNews() {
-    const featuredSection = document.getElementById('featured');
-    featuredSection.innerHTML = `
-        <div class="featured-article-card">
-            ${featuredNews.image ? `<img src="${featuredNews.image}" alt="${featuredNews.title}" />` : ''} <!-- Image -->
-            <div class="content">
-                <span class="category">${featuredNews.category}</span> <!-- Category below the image -->
-                <h3 class="featured-title">${featuredNews.title}</h3> <!-- Title -->
-                <p class="contents">${featuredNews.content}</p>
-                <span class="timestamp">${featuredNews.timestamp}</span> <!-- Timestamp -->
-            </div>
-        </div>
-    `;
+// Set country and region info
+function renderCountryAndRegion() {
+    const countryCode = "PH"; // You can change this dynamically if needed
+    const countryName = countryNameMap[countryCode] || "Unknown";
+    const countryRegionContainer = document.getElementById('country-region');
+    countryRegionContainer.textContent = countryName;
 }
 
+// Update the news section when the page loads
+window.addEventListener('DOMContentLoaded', () => {
+    updateNews();
+    displayFeaturedNews();
+    updateClock();
+});
+
+setInterval(updateClock, 1000);
+setInterval(updateNews, 300000);
+
+// Function to update the clock
 function updateClock() {
     const clockElement = document.getElementById("clock");
     const now = new Date();
@@ -157,12 +156,12 @@ function updateClock() {
     clockElement.textContent = `${hours}:${minutes}:${seconds} ${period}`;
 }
 
-// Update the news section when the page loads
-window.addEventListener('DOMContentLoaded', () => {
+// Initialize everything
+function init() {
+    renderFeaturedNews();
+    renderCountryAndRegion();
     updateNews();
-    displayFeaturedNews();
-    updateClock();
-});
+    setInterval(updateNews, 3600000); // Update news every hour
+}
 
-setInterval(updateClock, 1000);
-setInterval(updateNews, 300000);
+init();
