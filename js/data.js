@@ -44,10 +44,12 @@ async function fetchNews(url) {
 async function updateNews() {
     try {
         const nationalNewsUrl = 'https://data.gmanetwork.com/gno/rss/news/feed.xml';
+        const showbizNewsUrl = 'https://data.gmanetwork.com/gno/rss/showbiz/feed.xml';
         const worldNewsUrl = 'https://data.gmanetwork.com/gno/rss/news/world/feed.xml';
 
         const [nationalNews, showbizNews, worldNews] = await Promise.all([
             fetchNews(nationalNewsUrl),
+            fetchNews(showbizNewsUrl),
             fetchNews(worldNewsUrl)
         ]);
 
