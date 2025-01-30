@@ -144,36 +144,6 @@
     background-color: #ffd700;
 }
 
-/* Add Christmas lights to the header */
-.header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: repeating-linear-gradient(
-        to right,
-        #ff0000 0px,
-        #ff0000 10px,
-        #00ff00 10px,
-        #00ff00 20px,
-        #0000ff 20px,
-        #0000ff 30px
-    );
-    animation: christmas-lights 650ms ease-in-out infinite;
-}
-
-/* Keyframes for the christmas lights animation */
-@keyframes christmas-lights {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-}
-
 @media (max-width: 1080px) and (max-height: 2400px) and (aspect-ratio: 20/9) {
     .logo-text,
     .logo-highlight {

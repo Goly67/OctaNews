@@ -1,8 +1,8 @@
 // Ensure `newsData` is globally accessible or imported correctly
 const featuredNews = {
     title: "24-HOUR PUBLIC WEATHER FORECAST",
-    content: "This section shows realtime weather provided by PAGASA! A trustable source from the Weather Cooperatives in the Philippines, We will be also planning to partner with Windy soon! So stay tuned for the update!",
-    image: "https://www.pagasa.dost.gov.ph/themes/hiraia/assets/images/learning_tools/how_a_weather_forecast_is_made/Total%20Precipitation%2023-28%20DEC%202016.gif",
+    content: "This section shows realtime weather provided by PAGASA! A trustable source from the Weather Cooperatives in the Philippines, we will work on making this secetion here always up to date. As of right now, we will still show 24 hour updates of PAGASA.",
+    image: "https://src.meteopilipinas.gov.ph/repo/himawari/24hour/irsml/1irsml.gif",
     category: "PAGASA WEATHER FORECAST",
     timestamp: new Date().toLocaleDateString() // This will only display the date
 };
