@@ -1,7 +1,7 @@
 // Ensure `newsData` is globally accessible or imported correctly
 const featuredNews = {
     title: "24-HOUR PUBLIC WEATHER FORECAST",
-    content: "This section shows realtime weather provided by PAGASA! A trustable source from the Weather Cooperatives in the Philippines, we will work on making this secetion here always up to date. As of right now, we will still show 24 hour updates of PAGASA.",
+    content: "This section shows realtime weather provided by PAGASA! A trustable source from the Weather Cooperatives in the Philippines.",
     image: "https://src.meteopilipinas.gov.ph/repo/himawari/24hour/irsml/1irsml.gif",
     category: "PAGASA WEATHER FORECAST",
     timestamp: new Date().toLocaleDateString() // This will only display the date
