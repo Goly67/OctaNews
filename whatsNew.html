@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's New - Octa News</title>
+    <link rel="icon"
+        href="https://lh6.googleusercontent.com/HeHv8Zy0LHW-2tQ9irEW_SGth9ex5dS7Gq95iYlA2OdKDB1ZRgG9hydIaBud52xvtOqgruaumU-1UQSddamC-Uv963A4X55PRwUMOLee9YKCV9Kwr7ohpSLSs42fet9cjwXbBllO1wY=w1080"
+        type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c0303;
+            --secondary: #a00505;
+            --accent: #720000;
+            --background: #f7fafc;
+            --text: #2d3748;
+            --card-bg: #ffffff;
+            --header-font: 'Merriweather', serif;
+            --body-font: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: "Raleway", serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--background);
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: -10px;
+            font-size: 2.5rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .version-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .version-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .version-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .version-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .version-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .version-card h2 {
+            color: var(--primary);
+            margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .version-card ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .version-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .version-tag {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .change-type {
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .feature {
+            color: #38a169;
+        }
+
+        .improvement {
+            color: #3182ce;
+        }
+
+        .bugfix {
+            color: #e53e3e;
+        }
+
+        .Removed {
+            color: #e53e3e;
+        }
+
+        .Considering {
+            color: #cec005;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--background);
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .blob1 {
+            width: 600px;
+            height: 600px;
+            background-color: var(--secondary);
+            top: -300px;
+            left: -300px;
+            animation: float 20s infinite alternate;
+        }
+
+        .blob2 {
+            width: 400px;
+            height: 400px;
+            background-color: var(--accent);
+            bottom: -200px;
+            right: -200px;
+            animation: float 15s infinite alternate-reverse;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--secondary);
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(50px, 50px) rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .version-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .back-button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            margin: 5px;
+            /* Initial margin (no bottom) */
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        @media (max-width: 941px) {
+            .back-button {
+        top: 0; /* Position at the top */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust for centering */
+        margin: 5px auto; /* Auto margins for centering and keeping vertical margin*/
+        margin-bottom: 20px;
+    }
+
+            h1 {
+                margin-top: 15px;
+            }
+        }
+
+        .back-button:hover {
+            background-color: #a30000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <header>
+        <a href="https://goly67.github.io/OctaNews/" class="back-button">Back to Main Website</a>
+        <h1>What's New - OCTA NEWS</h1>
+    </header>
+    <main>
+        <div class="version-container" id="versionContainer">
+            <!-- Versions will be dynamically added here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 OctaNews</p>
+    </footer>
+
+    <script>
+        const versions = [
+        {
+                version: "2.3.0",
+                date: "TBA / To Be Announced",
+                changes: [
+                    { type: "feature", description: "Dark Mode on all devices" },
+                    { type: "Considering", description: "Display of news videos and live videos" },
+                    { type: "Considering", description: "Display of local news in Surigao Del Norte" },
+                    { type: "Considering", description: "Improved the design" },
+                    { type: "Considering", description: "Display of radio stations" }
+                ]
+            },
+            {
+                version: "2.2.0",
+                date: " 2025-01-31 / Current ",
+                changes: [
+                    { type: "feature", description: "Removed rewind button that directs you to the old OctaNews" },
+                    { type: "feature", description: "Realtime display of clock on header" },
+                    { type: "Removed", description: "Header will now not follow you" },
+                    { type: "improvement", description: "Improved the animations" }
+                ]
+            },
+            {
+                version: "2.1.0",
+                date: "2025-01-30",
+                changes: [
+                    { type: "Considering", description: "Dark mode support" },
+                    { type: "feature", description: "Showbiz section" },
+                    { type: "feature", description: "Loading screen" },
+                    { type: "improvement", description: "UI Improvement" },
+                    { type: "bugfix", description: "Some sections were not showing up." }
+                ]
+            },
+            {
+                version: "2.0.0",
+                date: "2025-01-27",
+                changes: [
+                    { type: "bugfix", description: "Fixed slow loading of news." },
+                    { type: "improvement", description: "UI Improvement" },
+                    { type: "Removed", description: "Removed Christmas Theme." },
+                    { type: "feature", description: "Fully functioning website." }
+                ]
+            }
+        ];
+
+        function createVersionCard(version) {
+            const card = document.createElement('div');
+            card.className = 'version-card';
+            card.innerHTML = `
+                <h2>
+                    <span>Version ${version.version}</span>
+                    <span class="version-tag">${version.date}</span>
+                </h2>
+                <ul>
+                    ${version.changes.map(change => `
+                        <li>
+                            <span class="change-type ${change.type}">${change.type.charAt(0).toUpperCase() + change.type.slice(1)}</span>
+                            ${change.description}
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            return card;
+        }
+
+        function populateVersions(searchTerm = '') {
+            const container = document.getElementById('versionContainer');
+            container.innerHTML = '';
+            versions.forEach(version => {
+                if (searchTerm === '' || version.changes.some(change =>
+                    change.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    change.type.toLowerCase().includes(searchTerm.toLowerCase())
+                )) {
+                    const card = createVersionCard(version);
+                    container.appendChild(card);
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateVersions();
+            document.querySelectorAll('.version-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                observer.observe(card);
+            });
+
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                populateVersions(e.target.value);
+            });
+        });
+    </script>
+</body>
+
+</html>
