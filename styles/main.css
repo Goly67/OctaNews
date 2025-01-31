@@ -45,7 +45,7 @@ main {
 .main-content {
     display: grid;
     gap: 30px;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 .header-logo img {
@@ -87,6 +87,9 @@ main {
     
     main {
         padding: 15px;
+    }
+    .main-content {
+        margin-top: -21px;
     }
 }
 
