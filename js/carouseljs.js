@@ -216,4 +216,9 @@ async function fetchNews(url) {
     });
 }
 
+// Initialize everything
+function init() {
+    setInterval(updateShowbizNews, 1800000); 
+}
+
 document.addEventListener("DOMContentLoaded", updateShowbizNews);
