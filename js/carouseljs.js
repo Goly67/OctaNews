@@ -24,45 +24,59 @@ async function updateShowbizNews() {
         const style = document.createElement('style');
         style.textContent = `
             .carousel-item {
-                flex: 0 0 100%; /* Occupy full width on mobile */
-                max-width: 100%;
-                padding: 0 10px; /* Add some padding */
-                box-sizing: border-box; /* Include padding in width calculation */
-            }
-            .news-card {
-                width: 100%;
-                max-height: 400px; /* Set a maximum height */
-                overflow: hidden;
-                display: flex; /* Use flexbox for layout */
-                flex-direction: column; /* Stack image and content vertically */
-            }
-            .news-card img {
-                width: 100%;
-                height: 600px; /* Fixed height for images, adjust as needed */
-                object-fit: cover;
-            }
-            .news-content {
-                padding: 10px;
-                flex-grow: 1; /* Allow content to fill remaining space */
-            }
-            .news-titles {
-                font-size: 16px;
-                line-height: 1.4;
-                margin-top: 8px;
-            }
-            #track {
-                display: flex;
-                transition: transform 0.3s ease-in-out; /* Add transition here */
-            }
-            @media (min-width: 769px) { /* Adjust for larger screens */
-                .carousel-item {
-                    flex: 0 0 33.33%; /* Show 3 cards */
-                    max-width: 33.33%;
-                }
-                .news-card img {
-                    height: 190px; /* Adjust image height for larger screens */
-                }
-            }
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.news-card {
+    width: 100%;
+    max-height: 400px; /* Keep a max height to prevent content overflow */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.news-card img {
+    width: 100%;
+    height: auto; /* Key change: Set height to auto */
+    object-fit: cover;
+    max-height: 200px; /* Set a maximum height for mobile images */
+}
+
+.news-content {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.news-titles {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-top: 8px;
+}
+
+#track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+@media (min-width: 769px) {
+    .carousel-item {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
+
+    .news-card img {
+        max-height: 190px; /* Adjust max height for larger screens */
+    }
+}
         `;
         document.head.appendChild(style);
 
@@ -106,7 +120,7 @@ async function updateShowbizNews() {
             } else if (viewportWidth <= 1042) {
                 translateValue = currentIndex * -33.33; // Show 3 cards
             } else {
-                translateValue = currentIndex * -27; // Show 4 cards
+                translateValue = currentIndex * -39; // Show 4 cards
             }
 
             track.style.transform = `translateX(${translateValue}%)`;
