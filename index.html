@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Octa News</title>
+    <title>Octa News - Main</title>
     <link rel="icon"
-        href="https://lh5.googleusercontent.com/IMO46sYn1_B-kpDsJIsuyMsCxCTxrbmMQskjNucTuCQu4T84tQZ2qAWf93hwEcjQ34a60GL9d68E1rYB62sIRAO4gLFek6KCyLBHzaM4nAhoZe-UZ5rxfKxq_STKD9ozedsHiGTiq9A=w1080"
+        href="https://lh5.googleusercontent.com/YvDwBjidy318dHv19sN7pf30yAc-A7go-jqjQl1mSeTY56fvwMy8E2a6gNQ5h7TxgbAtGRoykm44HMNr2yj9em1KjUnjiZmLNH4ROmtf-3UtcjlUrMWXX71tXR-OBfA19Q=w1440"
         type="image/x-icon">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/articles.css">
     <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/carousel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -54,6 +55,22 @@
             <!-- Featured article will be inserted here -->
         </div>
 
+        <div class="container">
+            <div class="heading">
+                <h2 class="section-title">Showbiz</h2>
+                <div class="nav-buttons">
+                    <button class="nav-button prev">←</button>
+                    <button class="nav-button next">→</button>
+                </div>
+            </div>
+            
+            <div class="carousel">
+                <div class="carousel-track" id="track">
+                    <!-- Items will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
         <div class="main-content">
             <div class="content-left">
                 <h2 class="section-title">Latest News of the Day</h2>
@@ -83,6 +100,7 @@
     <script src="js/data.js"></script>
     <script src="js/articleRenderer.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/carouseljs.js"></script>
 </body>
 
 </html>

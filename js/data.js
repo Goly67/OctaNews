@@ -1,7 +1,7 @@
 // Ensure `newsData` is globally accessible or imported correctly
 const featuredNews = {
     title: "24-HOUR PUBLIC WEATHER FORECAST",
-    content: "This section shows realtime weather provided by PAGASA! A trustable source from the Weather Cooperatives in the Philippines.",
+    content: "This section shows realtime weather provided by PAGASA! A trustable source from the Weather Cooperatives in the Philippines, we will work on making this secetion here always up to date. As of right now, we will still show 24 hour updates of PAGASA.",
     image: "https://src.meteopilipinas.gov.ph/repo/himawari/24hour/irsml/1irsml.gif",
     category: "PAGASA WEATHER FORECAST",
     timestamp: new Date().toLocaleDateString() // This will only display the date
@@ -53,10 +53,18 @@ async function updateNews() {
             fetchNews(worldNewsUrl)
         ]);
 
+        console.log("Fetched National News:", nationalNews);
+        console.log("Fetched World News:", worldNews);
+        console.log("Fetched World News:", showbizNews);
+
+        // ** Ensure national news only contains national articles **
+        const filteredNationalNews = nationalNews.filter(item => !item.link.includes('/world/'));
+
+        console.log("Filtered National News:", filteredNationalNews);
+
         const articlesGrid = document.getElementById('articles');
-        articlesGrid.innerHTML = nationalNews.slice(0, 6).map(item => `
+        articlesGrid.innerHTML = filteredNationalNews.slice(0, 6).map(item => `
             <div class="article-card">
-                ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''}
                 <div class="content">
                     <span class="category">National News</span>
                     <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
@@ -66,9 +74,8 @@ async function updateNews() {
         `).join('');
 
         const worldNewsGrid = document.getElementById('world-news');
-        worldNewsGrid.innerHTML = worldNews.slice(6, 12).map(item => `
+        worldNewsGrid.innerHTML = worldNews.slice(0, 6).map(item => `
             <div class="article-card">
-                ${item.image ? `<img src="${item.image}" alt="${item.title}" />` : ''}
                 <div class="content">
                     <span class="category">World News</span>
                     <h3 class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></h3>
@@ -76,6 +83,7 @@ async function updateNews() {
                 </div>
             </div>
         `).join('');
+
     } catch (error) {
         console.error('Error fetching news:', error);
     }
