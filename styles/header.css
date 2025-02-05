@@ -12,6 +12,15 @@
     font-size: 0.9rem;
 }
 
+.warning {
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    animation: flash 1s infinite; /* Apply the flashing animation */
+}
+
 .top-bar-content {
     max-width: 1300px;
     margin: 0 auto;
@@ -52,10 +61,40 @@
 .header-content {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.header-warning {
+    background-color: #b80101;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+.header-content-warning {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes flash {
+    0% {
+        color: #ffffff; /* Red color */
+    }
+    50% {
+        color: #ffa2a2; /* Lighter red or any color you prefer */
+    }
+    100% {
+        color: #ffffff; /* Return to original color */
+    }
 }
 
 .logo {
@@ -83,17 +122,6 @@
     display: flex;
     align-items: center;
     gap: 20px;
-}
-
-.clock {
-    position: absolute;
-    margin-top: -0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--header-font);
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--primary-color);
 }
 
 .country-region {
@@ -150,13 +178,6 @@
         font-size: 0.7rem;
     }
 
-    .clock {
-        font-size: 1rem; /* Adjust the font size for better fit */
-        left: 50%;
-        transform: translateX(-50%);
-        margin-top: 0; /* Adjust spacing if necessary */
-    }
-
     .nav a {
         font-size: 0.8rem; /* Adjust navigation text size */
     }
@@ -176,12 +197,6 @@
 
     .header-right {
         display: none;
-    }
-
-    .clock {
-        left: 50%;
-        transform: translateX(-15%);
-        font-size: 1.7rem;  /* Slightly smaller font size for tablets */
     }
 
     .logo-text,
@@ -207,12 +222,6 @@
 @media (max-width: 480px) {
     .top-bar {
         font-size: 0.8rem;
-    }
-
-    .clock {
-        left: 59%;
-        transform: translateX(-50%);
-        font-size: 1.4rem;  /* Further reduce font size for mobile screens */
     }
 
     .logo-text,

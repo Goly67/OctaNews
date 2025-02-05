@@ -1,9 +1,9 @@
 // Ensure `newsData` is globally accessible or imported correctly
 const featuredNews = {
-    title: "24-HOUR PUBLIC WEATHER FORECAST",
-    content: "This section shows realtime weather provided by PAGASA! A trustable source from the Weather Cooperatives in the Philippines.",
-    image: "https://src.meteopilipinas.gov.ph/repo/himawari/24hour/irsml/1irsml.gif",
-    category: "PAGASA WEATHER FORECAST",
+    title: "PROTECT YOURSELF, FROM KIDNAPPING",
+    content: "Protect yourself from kidnapping, make sure you have <Strong>Emergency SOS</Strong> enabled on your phone and <Strong>Emergency Contacts</Strong> ready, make sure you have <Strong>Load</Strong> for emergency calls. <Strong>Be ready, Be safe.</Strong?",
+    image: "https://lh5.googleusercontent.com/UR3dtEHs5XEf6nYtBSufXKlY0fOV8fi_1i0DkfiBbNRS83VWk5jagL1pOakyyZYbog7wS6UbK0Z3OyTXbu1iLieEoDcvEDiigtE0LOxjph81bjF2i3wo8A7oJAKk3KNpuhIbjAXlGG4=w514", //https://src.meteopilipinas.gov.ph/repo/himawari/24hour/irsml/1irsml.gif
+    category: "Philippine National Police",
     timestamp: new Date().toLocaleDateString() // This will only display the date
 };
 
@@ -118,38 +118,9 @@ function renderCountryAndRegion() {
 window.addEventListener('DOMContentLoaded', () => {
     updateNews();
     displayFeaturedNews();
-    updateClock();
 });
 
-setInterval(updateClock, 1000);
 setInterval(updateNews, 300000);
-
-// Function to update the clock
-function updateClock() {
-    const clockElement = document.getElementById("clock");
-    const now = new Date();
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    let seconds = now.getSeconds();
-    let period = "AM";
-    
-    // Convert to 12-hour format with AM/PM
-    if (hours >= 12) {
-        period = "PM";
-        if (hours > 12) {
-            hours -= 12; // Convert to 12-hour format
-        }
-    } else if (hours === 0) {
-        hours = 12; // Handle midnight case (00:00 becomes 12:00 AM)
-    }
-    
-    // Ensure two digits for minutes and seconds
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-    
-    // Set the clock text
-    clockElement.textContent = `${hours}:${minutes}:${seconds} ${period}`;
-}
 
 // Initialize everything
 function init() {
