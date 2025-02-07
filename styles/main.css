@@ -58,6 +58,7 @@ body::after {
 @media (max-width: 768px) {
     .video-container {
         max-width: 500px; /* Smaller width on mobile */
+        height: 620px;
     }
 }
 
