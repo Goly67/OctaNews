@@ -36,6 +36,31 @@ body::after {
     content: none;
 }
 
+.video-container {
+    position: relative;
+    width: 100%;  /* Makes it responsive */
+    max-width: 500px; 
+    height: 735px;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Make the video responsive */
+.video-container iframe {
+    width: 100%; 
+    height: auto;
+    aspect-ratio: 9 / 16; /* Keeps proper video aspect ratio */
+    border-radius: 20px;
+}
+
+/* Adjust video size for mobile */
+@media (max-width: 768px) {
+    .video-container {
+        max-width: 500px; /* Smaller width on mobile */
+    }
+}
+
 main {
     max-width: 1300px;
     margin: 0 auto;

@@ -1,9 +1,9 @@
 // Ensure `newsData` is globally accessible or imported correctly
 const featuredNews = {
-    title: "PROTECT YOURSELF, FROM KIDNAPPING",
-    content: "Protect yourself from kidnapping, make sure you have <Strong>Emergency SOS</Strong> enabled on your phone and <Strong>Emergency Contacts</Strong> ready, make sure you have <Strong>Load</Strong> for emergency calls. <Strong>Be ready, Be safe.</Strong?",
-    image: "https://lh5.googleusercontent.com/UR3dtEHs5XEf6nYtBSufXKlY0fOV8fi_1i0DkfiBbNRS83VWk5jagL1pOakyyZYbog7wS6UbK0Z3OyTXbu1iLieEoDcvEDiigtE0LOxjph81bjF2i3wo8A7oJAKk3KNpuhIbjAXlGG4=w514", //https://src.meteopilipinas.gov.ph/repo/himawari/24hour/irsml/1irsml.gif
-    category: "Philippine National Police",
+    title: "PNP SURIGAO INVESTIGATION",
+    content: "PNP Surigao <Strong>Investigating</Strong> the \"Kidnapping Incident\", they stated that there was <Strong>no tricycle seen at the CCTV</Strong>, they also stated that they can capture faces and detect even when wearing any obstructions on the face. Now people are wondering if the girl only made a story about it for \"Clout\". They are still investigating the current situation and we have to wait for more information.<br><br><br><Strong>RPN DXKS SURIGAO</Strong>",
+    video: "https://www.facebook.com/RPNSurigao1080/videos/1180814840311370", //https://src.meteopilipinas.gov.ph/repo/himawari/24hour/irsml/1irsml.gif
+    category: "Local surigaonon news",
     timestamp: new Date().toLocaleDateString() // This will only display the date
 };
 
@@ -94,7 +94,10 @@ function renderFeaturedNews() {
     const featuredContainer = document.getElementById('featured');
     const featuredArticleHTML = `
         <div class="featured-article-card">
-            <img src="${featuredNews.image}" alt="Featured News">
+                <iframe class="video-container" src="https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(featuredNews.video)}"
+                            width="500" height="700" style="border-radius:20px;border:none;overflow:hidden"
+                            scrolling="no" frameborder="0" allowfullscreen="true">
+                </iframe>
             <div class="content">
                 <span class="category">${featuredNews.category}</span>
                 <h2>${featuredNews.title}</h2>
