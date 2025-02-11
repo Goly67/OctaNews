@@ -59,9 +59,9 @@ body::after {
 /* Adjust video size for mobile */
 @media (max-width: 768px) {
     .video-container {
-        max-width: 425px;
+        max-width: 410px;
         /* Smaller width on mobile */
-        height: 620px;
+        height: 600px;
         margin-bottom: -1rem;
     }
 }
