@@ -19,7 +19,6 @@
     0% {
         transform: translateY(0) rotate(0deg);
     }
-
     100% {
         transform: translateY(100vh) rotate(360deg);
     }
@@ -37,35 +36,6 @@ body::after {
     content: none;
 }
 
-.video-container {
-    position: relative;
-    width: 560px;
-    /* Makes it responsive */
-    height: 735px;
-    margin: auto;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-/* Make the video responsive */
-.video-container iframe {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 9 / 16;
-    /* Keeps proper video aspect ratio */
-    border-radius: 20px;
-}
-
-/* Adjust video size for mobile */
-@media (max-width: 768px) {
-    .video-container {
-        max-width: 100%;
-        /* Smaller width on mobile */
-        height: 625px;
-        margin-bottom: -1rem;
-    }
-}
-
 main {
     max-width: 1300px;
     margin: 0 auto;
@@ -79,8 +49,7 @@ main {
 }
 
 .header-logo img {
-    max-height: 60px;
-    /* Adjust as needed for the logo size */
+    max-height: 60px; /* Adjust as needed for the logo size */
     object-fit: contain;
 }
 
@@ -115,11 +84,10 @@ main {
     .section-title {
         font-size: 1.5rem;
     }
-
+    
     main {
         padding: 15px;
     }
-
     .main-content {
         margin-top: -21px;
     }
@@ -127,79 +95,57 @@ main {
 
 /* Loading Screen Style */
 #loading-screen {
-    position: fixed;
-    /* Fixes the loading screen in place */
-    top: 0;
-    /* Always on the top */
-    left: 0;
-    /* Always on the left */
-    width: 100vw;
-    /* Full width of the viewport */
-    height: 100vh;
-    /* Full height of the viewport */
-    background-color: rgba(255, 255, 255);
-    /* Semi-transparent background */
-    display: flex;
-    /* Flexbox for centering the loader */
-    justify-content: center;
-    /* Centers loader horizontally */
-    align-items: center;
-    /* Centers loader vertically */
-    z-index: 9999;
-    /* Makes sure it's above all other content */
+    position: fixed;               /* Fixes the loading screen in place */
+    top: 0;                         /* Always on the top */
+    left: 0;                        /* Always on the left */
+    width: 100vw;                   /* Full width of the viewport */
+    height: 100vh;                  /* Full height of the viewport */
+    background-color: rgba(255, 255, 255); /* Semi-transparent background */
+    display: flex;                  /* Flexbox for centering the loader */
+    justify-content: center;        /* Centers loader horizontally */
+    align-items: center;            /* Centers loader vertically */
+    z-index: 9999;                  /* Makes sure it's above all other content */
     opacity: 1;
     transition: opacity 1s ease;
-    pointer-events: all;
-    /* Allows interactions with loader */
+    pointer-events: all;            /* Allows interactions with loader */
 }
 
 /* Loader Animation */
 .loader {
-    border: 6px solid #f3f3f3;
-    /* Light gray border */
-    border-top: 6px solid #b30000;
-    /* Colorful top part */
-    border-radius: 50%;
-    /* Circular shape */
+    border: 6px solid #f3f3f3;               /* Light gray border */
+    border-top: 6px solid #b30000; /* Colorful top part */
+    border-radius: 50%;                       /* Circular shape */
     width: 50px;
     height: 50px;
-    animation: spin 1s linear infinite;
-    /* Spinning animation */
+    animation: spin 1s linear infinite;       /* Spinning animation */
 }
 
 /* Keyframes for spinning animation */
 @keyframes spin {
     0% {
-        transform: rotate(0deg);
-        /* Starts at 0 degrees */
+        transform: rotate(0deg);             /* Starts at 0 degrees */
     }
-
     100% {
-        transform: rotate(360deg);
-        /* Spins to 360 degrees */
+        transform: rotate(360deg);           /* Spins to 360 degrees */
     }
 }
 
 /* Content visibility settings */
 #content {
     opacity: 0;
-    visibility: hidden;
-    /* Hides content initially */
-    transition: opacity 1s ease, visibility 0s 1s;
-    /* Smooth transition for opacity, delayed visibility */
+    visibility: hidden;                    /* Hides content initially */
+    transition: opacity 1s ease, visibility 0s 1s; /* Smooth transition for opacity, delayed visibility */
 }
 
 /* When the loading screen is hidden, content becomes visible */
 #loading-screen.hidden {
     opacity: 0;
-    pointer-events: none;
-    /* Disable interactions when hidden */
+    pointer-events: none;                    /* Disable interactions when hidden */
 }
 
 /* Content fades in after loading screen disappears */
-#loading-screen.hidden+#content {
+#loading-screen.hidden + #content {
     opacity: 1;
     visibility: visible;
-    transition: opacity 1s ease, visibility 0s 0s;
-    /* Content immediately visible after loading screen fade-out */
+    transition: opacity 1s ease, visibility 0s 0s; /* Content immediately visible after loading screen fade-out */
 }

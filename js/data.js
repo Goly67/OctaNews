@@ -1,9 +1,9 @@
 // Ensure `newsData` is globally accessible or imported correctly
 const featuredNews = {
-    title: "PNP SURIGAO INVESTIGATION",
-    content: "PNP Surigao <Strong>Investigating</Strong> the \"Kidnapping Incident\", they stated that there was <Strong>no tricycle seen at the CCTV</Strong>, they also stated that they can capture faces and detect even when wearing any obstructions on the face. Now people are wondering if the girl only made a story about it for \"Clout\". They are still investigating the current situation and we have to wait for more information.<br><br><br><Strong>RPN DXKS SURIGAO</Strong>",
-    video: "https://www.facebook.com/RPNSurigao1080/videos/1180814840311370", //https://src.meteopilipinas.gov.ph/repo/himawari/24hour/irsml/1irsml.gif
-    category: "Local surigaonon news",
+    title: "PAGASA WEATHER MAP UPDATE",
+    content: "A trusted weater provider fit for all of us filipino! Stay in touch with us to get more weather updates.",
+    image: "https://src.meteopilipinas.gov.ph/repo/himawari/24hour/irsml/1irsml.gif", 
+    category: "PAGASA WEATHER MAP UPDATE",
     timestamp: new Date().toLocaleDateString() // This will only display the date
 };
 
@@ -94,10 +94,7 @@ function renderFeaturedNews() {
     const featuredContainer = document.getElementById('featured');
     const featuredArticleHTML = `
         <div class="featured-article-card">
-                <iframe class="video-container" src="https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(featuredNews.video)}"
-                            width="500" height="700" style="border-radius:20px;border:none;overflow:hidden"
-                            scrolling="no" frameborder="0" allowfullscreen="true">
-                </iframe>
+            <img src="${featuredNews.image}" alt="Featured News">
             <div class="content">
                 <span class="category">${featuredNews.category}</span>
                 <h2>${featuredNews.title}</h2>
